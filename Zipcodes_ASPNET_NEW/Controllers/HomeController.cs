@@ -24,32 +24,19 @@ namespace Zipcodes_ASPNET.Controllers
             return View();
         }
 
-        public IActionResult GetZipCodesWithInRangeRadius(string zipCode, int radiusInMiles)
-        {
-            try
-            {
-				//LINQ query to fetch data from the database.
-				List<ZipCodesWithDistance> result = _zipCodeDBContext.ZipCodesWithDistances
-                    .Where(w => (w.Zip1 == zipCode || w.Zip2 == zipCode) && w.miToZcta5 <= radiusInMiles)
-                    .ToList();
-                return Json(result);
-            }
-            catch (Exception ex)
-            {
-                return Json(ex.Message);
-            }
-        }
-
-        [Route("NearestZipCodes/{zipCode}/miles/{radius}")]
+        [Route("GetZipCodesWithInRangeRadius")]
+        [Route("GetZipCodesWithInRangeRadius/{zipCode}/miles/{radius}")]
         [HttpGet]
-        public JsonResult GetNearestZipCodesMiles(string zipCode, int radiusInMiles)
+        public JsonResult GetZipCodesWithInRangeRadius(string zipCode, int radiusInMiles)
 		{
             ZipCodeOutputDTO result = new ZipCodeOutputDTO();
             try
 			{
 				List<OutputZipCodeWithDistance> data = _zipCodeDBContext.ZipCodesWithDistances
                     .Where(w => (w.Zip1 == zipCode || w.Zip2 == zipCode) && w.miToZcta5 < radiusInMiles)
+                    .ToList()
                     .Select(w => new OutputZipCodeWithDistance(w, zipCode))
+                    .OrderBy(w => w.Distance)
                     .ToList();
                 result.success = true;
                 result.errorMessage = string.Empty;

@@ -39,7 +39,6 @@
 
         $(document).ready(function () {
             $('#clickFetchDataId').click(function () {
-
                 var zipCodes = $('#zipcode').val();
                 var radiusInMiles = $('#radiusInMiles').val();
                 GetNearestZipcodes(zipCodes, radiusInMiles);
@@ -47,27 +46,34 @@
         });
 
         function GetNearestZipcodes(zipCode, radiusInMiles) {
-            $.get('@Url.Action("GetZipCodesWithInRangeRadius" , "Home")', { 'zipCode': zipCode, 'radiusInMiles': radiusInMiles }, function (data, status) {
+            $.get(
+                '@Url.Action("GetZipCodesWithInRangeRadius" , "Home")',
+                { 'zipCode': zipCode, 'radiusInMiles': radiusInMiles },
+                function (result, status) {
+                    if (result.success) {
+                        if (result.data == undefined || result.data.length == 0) {
+                            alert('No Data found');
+                        }
+                        else {
+                            var htmlRow = '';
+                            $.each(result.data, function (i) {
+                                debugger;
+                                console.log(result.data[i]);
+                                htmlRow += '<tr>';
+                                htmlRow += '<td>' + result.data[i].zipCode + '</td>';
+                                htmlRow += '<td>' + result.data[i].distance + '</td>';
+                                htmlRow += '</tr>';
+                            });
 
-                //alert("Data: " + data + "\nStatus: " + status);
-                if (data == undefined || data.length == 0) {
-                    alert('No Data found');
+                            $('#tableBodyId').html(htmlRow);
+                            $('#tableNearestZipCodes').fadeIn();
+                        }
+                    }
+                    else {
+                        alert(result.errorMessage);
+                    }
                 }
-                else {
-                    var htmlRow = '<tr>';
-                    $.each(data, function (i) {
-                        debugger;
-                        htmlRow += '<td>' + data[i].zip1 + '</td>';
-                        htmlRow += '<td>' + data[i].zip2 + '</td>';
-                        htmlRow += '<td>' + data[i].miToZcta5 + '</td>'
-                        htmlRow += '</tr>';
-                    });
-
-
-                    $('#tableBodyId').html(htmlRow);
-                    $('#tableNearestZipCodes').fadeIn();
-                }
-            });
+            );
         }
 
     </script>

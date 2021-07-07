@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -25,7 +25,7 @@ namespace Zipcodes_ASPNET.Models
             {
                 //Please change the connection string according to your server and database 
                 optionsBuilder.UseMySQL("Server=moutasemserver.mysql.database.azure.com; Port=3306; Database=zipcodesdb; Uid=moutasemakkad@moutasemserver; " +
-                    "Pwd=Geozip123; Persist Security Info = False; Connect Timeout = 3000");
+                    "Pwd=Geozip123.; Persist Security Info = False; Connect Timeout = 3000");
             }
         }
 
