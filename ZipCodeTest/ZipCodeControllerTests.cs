@@ -37,8 +37,8 @@ namespace ZipCodeTest
 		}
 
 		[Theory]
-		[InlineData("00622", 50, 63)]
-		[InlineData("00601", 10, 8)]
+		[InlineData("00622", 50, 45)]
+		[InlineData("00601", 10, 5)]
 		public void CheckExpectedResults(string zipCode, int miles, int expected)
 		{
 			HomeController controller = new HomeController(logger);

@@ -25,7 +25,7 @@ namespace Zipcodes_ASPNET.Controllers
         }
 
         [Route("GetZipCodesWithInRangeRadius")]
-        [Route("GetZipCodesWithInRangeRadius/{zipCode}/miles/{radius}")]
+        [Route("GetZipCodesWithInRangeRadius/{zipCode}/miles/{radiusInMiles}/")]
         [HttpGet]
         public JsonResult GetZipCodesWithInRangeRadius(string zipCode, int radiusInMiles)
 		{
