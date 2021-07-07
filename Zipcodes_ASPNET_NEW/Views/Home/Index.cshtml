@@ -25,8 +25,7 @@
     <table class="table" style="padding-top: 50px; display: none;" id="tableNearestZipCodes">
         <thead>
             <tr>
-                <th>User zipcode</th>
-                <th>Nearest zipcode</th>
+                <th>ZipCode</th>
                 <th>Distance</th>
             </tr>
         </thead>
@@ -38,39 +37,38 @@
 
     <script>
 
-    $(document).ready(function () {
-        $('#clickFetchDataId').click(function () {
+        $(document).ready(function () {
+            $('#clickFetchDataId').click(function () {
 
-            var zipCodes = $('#zipcode').val();
-            var radiusInMiles = $('#radiusInMiles').val();
-            GetNearestZipcodes(zipCodes, radiusInMiles);
+                var zipCodes = $('#zipcode').val();
+                var radiusInMiles = $('#radiusInMiles').val();
+                GetNearestZipcodes(zipCodes, radiusInMiles);
+            });
         });
-    });
 
-    function GetNearestZipcodes(zipCode, radiusInMiles)
-    {
-        $.get('@Url.Action("GetZipCodesWithInRangeRadius" , "Home")', { 'zipCode': zipCode, 'radiusInMiles': radiusInMiles }, function (data, status) {
+        function GetNearestZipcodes(zipCode, radiusInMiles) {
+            $.get('@Url.Action("GetZipCodesWithInRangeRadius" , "Home")', { 'zipCode': zipCode, 'radiusInMiles': radiusInMiles }, function (data, status) {
 
-            //alert("Data: " + data + "\nStatus: " + status);
-            if (data == undefined || data.length == 0) {
-                alert('No Data found');
-            }
-            else {
-                var htmlRow = '<tr>';
-                $.each(data, function (i) {
-                    debugger;
-                    htmlRow += '<td>' + data[i].zip1 + '</td>';
-                    htmlRow += '<td>' + data[i].zip2 + '</td>';
-                    htmlRow += '<td>' + data[i].miToZcta5 + '</td>'
-                    htmlRow += '</tr>';
-                });
-                
+                //alert("Data: " + data + "\nStatus: " + status);
+                if (data == undefined || data.length == 0) {
+                    alert('No Data found');
+                }
+                else {
+                    var htmlRow = '<tr>';
+                    $.each(data, function (i) {
+                        debugger;
+                        htmlRow += '<td>' + data[i].zip1 + '</td>';
+                        htmlRow += '<td>' + data[i].zip2 + '</td>';
+                        htmlRow += '<td>' + data[i].miToZcta5 + '</td>'
+                        htmlRow += '</tr>';
+                    });
 
-                $('#tableBodyId').html(htmlRow);
-                $('#tableNearestZipCodes').fadeIn();
-            }
-        });
-    }
+
+                    $('#tableBodyId').html(htmlRow);
+                    $('#tableNearestZipCodes').fadeIn();
+                }
+            });
+        }
 
     </script>
 }

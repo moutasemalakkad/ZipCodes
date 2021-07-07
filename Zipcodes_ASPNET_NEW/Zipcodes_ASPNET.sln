@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.810.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zipcodes_ASPNET", "Zipcodes_ASPNET.csproj", "{307B9305-5361-42D2-B7C7-6A0DB191DA06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zipcodes_ASPNET", "Zipcodes_ASPNET.csproj", "{307B9305-5361-42D2-B7C7-6A0DB191DA06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZipCodeTest", "..\ZipCodeTest\ZipCodeTest.csproj", "{7568503A-5BCC-47E1-8B4F-8556D14123B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{307B9305-5361-42D2-B7C7-6A0DB191DA06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{307B9305-5361-42D2-B7C7-6A0DB191DA06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{307B9305-5361-42D2-B7C7-6A0DB191DA06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7568503A-5BCC-47E1-8B4F-8556D14123B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7568503A-5BCC-47E1-8B4F-8556D14123B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7568503A-5BCC-47E1-8B4F-8556D14123B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7568503A-5BCC-47E1-8B4F-8556D14123B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
