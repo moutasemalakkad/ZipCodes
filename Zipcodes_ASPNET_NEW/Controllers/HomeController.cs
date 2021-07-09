@@ -13,9 +13,11 @@ namespace Zipcodes_ASPNET.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ZipCodeSQLiteDBContext _db;
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _db = new ZipCodeSQLiteDBContext();
         }
 
         public IActionResult Index()
@@ -38,7 +40,7 @@ namespace Zipcodes_ASPNET.Controllers
                 ZipCodeOutputDTO result = new ZipCodeOutputDTO();
                 try
                 {
-                    List<OutputZipCodeWithDistance> data = ZipCodeSQLiteDBContext
+                    List<OutputZipCodeWithDistance> data = _db
                         .GetZipCodesWithinRadius(zipCode, radiusInMiles)
                         .Select(w => new OutputZipCodeWithDistance(w, zipCode))
                         .OrderBy(w => w.Distance)
