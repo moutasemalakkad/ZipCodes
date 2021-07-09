@@ -9,7 +9,7 @@ namespace Zipcodes_ASPNET.Models
 	public class ZipCodeSQLiteDBContext
 	{
 		//private static string filename = "zipCodesDB.db";
-		private static SQLiteConnection connection = new SQLiteConnection(@"Data Source=C:\Users\PettinR\source\repos\ZipCodes\Data\OptimzipCodesDB.db;Version=3");
+		private static SQLiteConnection connection = new SQLiteConnection(@"Data Source=..\..\..\..\Data\OptimzipCodesDB.db;Version=3");
 
 		public static List<ZipCodesWithDistance> GetZipCodesWithinRadius(string inputZipCode, int radiusInMiles)
 		{
